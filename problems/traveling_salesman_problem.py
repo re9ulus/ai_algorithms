@@ -78,16 +78,18 @@ class TravelinSalesmanProblem:
         self.__plot_axis()
         plt.show()
 
-    def generate_random_cities(self, n):
-        raise "ERROR: Unimplemented"
+    def generate_random_problem(self, n, min_val, max_val):
+        self.cities = []
+        for i in xrange(n):
+            self.add_city(City(np.random.randint(min_val, high=max_val), np.random.randint(min_val, high=max_val)))
+
+    def generate_random_path(self):
+        return np.random.permutation(len(self.cities))
 
 
 if __name__ == '__main__':
     tsp = TravelinSalesmanProblem()
-    tsp.add_city(City(30, 30))
-    tsp.add_city(City(50, 20))
-    tsp.add_city(City(20, 60))
-    tsp.add_city(City(80, 40))
+    tsp.generate_random_problem(100, 0, 100)
+    random_path = tsp.generate_random_path()
     tsp.plot_cities()
-    path = [2, 1, 0, 3]
-    tsp.plot_path(path)
+    tsp.plot_path(random_path)

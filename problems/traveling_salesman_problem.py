@@ -12,7 +12,7 @@ class City:
         self.y = y
 
     def distance_to(self, other):
-        math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)
+        return math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)
 
 
 class TravelinSalesmanProblem:
@@ -36,6 +36,9 @@ class TravelinSalesmanProblem:
             step_distance = self.distance_btw_cities(path[index-1], path[index])
             distance += step_distance
         return distance
+
+    def evaluate(self, path):
+        return self.path_distance(path)
 
     def check_path(self, path):
         '''Check that every city is visited only once
